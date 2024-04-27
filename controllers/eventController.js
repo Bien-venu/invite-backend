@@ -1,5 +1,4 @@
 const { Event } = require("../models/event");
-const Admin = require("../models/admin");
 const User = require("../models/user");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -59,8 +58,6 @@ const postEvent = async (req, res) => {
   const Profile = req.body.profile;
   const Organizer = req.body.organizer;
 
-  const adminId = req.body.admin_id;
-
   const secret = JWT_SECRET;
   const payload = {
     email: Name,
@@ -89,31 +86,7 @@ const postEvent = async (req, res) => {
     console.log(err);
   }
 
-  Admin.updateOne(
-    { admin_id: adminId },
-    {
-      $push: {
-        eventCreated: {
-          event_id: token,
-          name: Name,
-          venue: Venue,
-          date: Date,
-          time: Time,
-          description: Desc,
-          price: Price,
-          profile: Profile,
-          organizer: Organizer,
-        },
-      },
-    },
-    function (err) {
-      if (err) {
-        console.log(err);
-      }
-    }
-  );
-
-  res.status(200).send({ msg: "event created", event_id: token });
+ res.status(200).send({ msg: "event created", event_id: token });
 };
 
 const allEvents = async (req, res) => {
