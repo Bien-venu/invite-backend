@@ -60,7 +60,6 @@ const postEvent = async (req, res) => {
   const Organizer = req.body.organizer;
 
   const adminId = req.body.admin_id;
-  console.log("Admin: ", adminId);
 
   const secret = JWT_SECRET;
   const payload = {

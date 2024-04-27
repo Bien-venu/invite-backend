@@ -11,7 +11,6 @@ const { sendSMS } = require("./smsController");
 
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
-console.log("in auth - ", JWT_SECRET);
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
