@@ -16,7 +16,6 @@ console.log("in auth - ", JWT_SECRET);
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-// route - http://localhost:5000/user/signin/verify
 const verifyLogin = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -50,7 +49,6 @@ const verifyLogin = async (req, res) => {
   }
 };
 
-// route - http://localhost:5000/user/signup/verify
 const verifyOtp = async (req, res) => {
   const { firstname, lastname, email, password, image } = req.body;
   try {
